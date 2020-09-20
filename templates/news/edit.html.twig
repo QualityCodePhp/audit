@@ -1,0 +1,52 @@
+{% extends 'logged.html.twig' %}
+
+{% block body %}
+    <div class="row justify-content-md-center">
+        <div class="col-12">
+            <div class="card">
+                <h5 class="card-header">Edition d'une information</h5>
+                {{ include('news/_form.html.twig') }}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    {# Libs #}
+    <link rel="stylesheet" href="{{ asset('lib/summernote/summernote-bs4.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('lib/bootstrap-datepicker/css/bootstrap-datepicker.min.css')}}">
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    {# Libs #}
+    <script src="{{ asset('lib/summernote/summernote-bs4.min.js')}}"></script>
+    <script src="{{ asset('lib/summernote/lang/summernote-fr-FR.js')}}"></script>
+    <script src="{{ asset('lib/bootstrap-datepicker/js/bootstrap-datepicker.min.js')}}"></script>
+    <script src="{{ asset('lib/bootstrap-datepicker/locales/bootstrap-datepicker.fr.min.js')}}"></script>
+    <script>
+        $(document).ready(function() {
+            $('#news_newsContenu').summernote({
+                lang: 'fr-FR',
+                placeholder: '',
+                tabsize: 2,
+                height: 300,
+                toolbar: [
+                    ['style', ['style']],
+                    ['font', ['bold', 'underline', 'clear']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['insert', ['link', 'picture']],
+                    ['view', [ 'codeview', 'help']]
+                ]
+            });
+        });
+        console.log(new Date().toLocaleDateString());
+        $(document).ready(function() {
+            date = new Date();
+            // you may need to change this code if you are not using Bootstrap Datepicker
+            $('.js-datepicker').datepicker({
+                language: 'fr'
+            });
+        });
+    </script>
+{% endblock %}

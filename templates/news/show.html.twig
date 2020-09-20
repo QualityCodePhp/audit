@@ -1,0 +1,68 @@
+{% extends 'logged.html.twig' %}
+
+{% block body %}
+<div class="row justify-content-md-center">
+    <div class="col-12">
+        <div class="card">
+            <h5 class="card-header">Détail d'une news</h5>
+            <div class="card-body">
+                <table class="table">
+                    <tbody>
+                    <tr>
+                        <th scope="col">Type de news</th>
+                        <td >{{ news.refIdType.refLibCourt }}</td>
+                    </tr>
+                    <tr>
+                        <th>Priorité</th>
+                        <td>{{ news.refIdPriorite.refLibCourt }}</td>
+                    </tr>
+                    <tr>
+                        <th>Visibilité</th>
+                        <td>{{ news.refIdVisibilite.refLibLong }}</td>
+                    </tr>
+                    <tr>
+                        <th>Titre</th>
+                        <td>{{ news.newsTitre }}</td>
+                    </tr>
+                    <tr>
+                        <th>Contenu</th>
+                        <td>{{ news.newsContenu | raw}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="col">Date debut de diffusion</th>
+                        <td>{{ news.newsDateDebValid ? news.newsDateDebValid|date('d/m/Y') : '' }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="col">Date fin de diffusion</th>
+                        <td>{{ news.newsDateFinValid ? news.newsDateFinValid|date('d/m/Y') : '' }}</td>
+                    </tr>
+                    {% for pj in news.newsPieceJointes %}
+                        <tr>
+                            <th>Piece jointe N°{{ loop.index }}</th>
+                            <td><a href="{{ url('news_download', {'id': news.newsId, 'file': pj.npjNomStockage}) }}">{{ pj.npjNomReel }}</a></td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-footer text-muted">
+                <div class="row">
+                    <div class="col col-4 text-center">
+                        <a href="{{ path('news_index') }}">
+                            <button type="button" class="btn btn-secondary">Retour</button>
+                        </a>
+                    </div>
+                    <div class="col col-4 text-center">
+                        <a href="{{ path('news_edit', {'id': news.newsId}) }}">
+                            <button type="button" class="btn btn-primary">Edition</button>
+                        </a>
+                    </div>
+                    <div class="col col-4 text-center">
+                        {{ include('news/_delete_form.html.twig') }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

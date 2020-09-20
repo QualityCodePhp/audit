@@ -1,0 +1,44 @@
+security:
+    # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
+    access_decision_manager:
+        strategy: unanimous
+        allow_if_all_abstain: false
+    providers:
+        users:
+            entity:
+                class: App\Entity\Utilisateur
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        home:
+            pattern: ^/$
+            anonymous: ~
+        api:
+            pattern: ^/api/
+            stateless: true
+            wsse:      true
+
+        main:
+            pattern: ^/
+            anonymous: lazy
+            logout: ~
+            guard:
+                authenticators:
+                    - App\Security\EosBridgeAuthenticator
+
+
+            # activate different ways to authenticate
+            # https://symfony.com/doc/current/security.html#firewalls-authentication
+
+            # https://symfony.com/doc/current/security/impersonating_user.html
+            # switch_user: true
+
+    # Easy way to control access for large sections of your site
+    # Note: Only the *first* access control that matches will be used
+    access_control:
+        - { path: ^/$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/eos/src/, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/api/,  roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+

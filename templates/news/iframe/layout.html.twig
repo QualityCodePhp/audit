@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}EOS{% endblock %}</title>
+    {% block stylesheets %}
+        {# Libs #}
+        <link rel="stylesheet" href="{{ asset('lib/bootstrap/bootstrap.min.css')}}">
+        <link rel="stylesheet" href="{{ asset('lib/bootstrap/bootstrap-grid.min.css')}}">
+        <link rel="stylesheet" href="{{ asset('lib/bootstrap/bootstrap-reboot.min.css')}}">
+        <link rel="stylesheet" href="{{ asset('lib/slick/slick.min.css')}}">
+        <link rel="stylesheet" href="{{ asset('lib/fontawesome/css/all.css')}}">
+
+        {# Page #}
+        <link rel="stylesheet" href="{{ asset('css/pages/news.css')}}">
+    {% endblock %}
+</head>
+<body>
+<main role="main" class="container">
+    {% block body %}{% endblock %}
+</main>
+{% block javascripts %}
+    {# Libs #}
+    <script src="{{ asset('lib/jquery-3.5.1.min.js')}}"></script>
+    <script src="{{ asset('lib/bootstrap/bootstrap.min.js')}}"></script>
+    <script src="{{ asset('lib/bootstrap/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{ asset('lib/propper/propper.min.js')}}"></script>
+    <script src="{{ asset('lib/slick/slick.min.js')}}"></script>
+    <script src="{{ asset('lib/fontawesome/js/all.js')}}"></script>
+
+    {# Page #}
+    <script src="{{ asset('js/pages/news.js')}}"></script>
+{% endblock %}
+</body>
+</html>

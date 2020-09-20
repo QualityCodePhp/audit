@@ -1,0 +1,50 @@
+{% extends 'logged.html.twig' %}
+
+{% block body %}
+    <div class="row justify-content-md-center">
+        <div class="col-12">
+            <div class="card">
+                <h5 class="card-header">Ajout d'une information</h5>
+                    {{ include('news/_form.html.twig') }}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    {# Libs #}
+    <link rel="stylesheet" href="{{ asset('lib/summernote/summernote.min.css')}}">
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    {# Libs #}
+    <script src="{{ asset('lib/summernote/summernote.min.js')}}"></script>
+    <script>
+        $(document).ready(function() {
+            $('#news_newsContenu').summernote({
+                placeholder: 'Hello stand alone ui',
+                tabsize: 2,
+                height: 300,
+                toolbar: [
+                    ['style', ['style']],
+                    ['font', ['bold', 'underline', 'clear']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['insert', ['link', 'picture', 'video']],
+                    ['view', [ 'codeview', 'help']]
+                ]
+            });
+        });
+
+        $(document).ready(function() {
+            // you may need to change this code if you are not using Bootstrap Datepicker
+            $('.js-datepicker').datepicker({
+                format: 'dd/mm/yyyy',
+                language : 'fr',
+                firstDay: 1,
+                defaultDate: new Date()
+            });
+        });
+    </script>
+{% endblock %}

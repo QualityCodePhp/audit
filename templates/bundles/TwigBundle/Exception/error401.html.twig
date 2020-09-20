@@ -1,0 +1,13 @@
+{% extends 'layout.html.twig' %}
+
+{% block body %}
+    <div class="row">
+        <h1>Oups ! Erreur 401</h1>
+    </div>
+    <div class="row">
+        <p class="align-content-center">Vous n'avez pas accès à cette page</p>
+    </div>
+    <div class="row">
+        <p><a href="{{ path('home') }}">Retour &agrave; page d'acceuil</a>.</p>
+    </div>
+{% endblock %}

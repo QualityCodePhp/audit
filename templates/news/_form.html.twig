@@ -1,0 +1,47 @@
+{{ form_start(form) }}
+    <div class="card-body">
+        <div class="row">
+            <div class="col-4 form-group">
+                {{ form_row(form.refIdType) }}
+            </div>
+            <div class="col-4 form-group">
+                {{ form_row(form.refIdPriorite) }}
+            </div>
+            <div class="col-4 form-group">
+                {{ form_row(form.refIdVisibilite) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 form-group">
+                {{ form_row(form.newsTitre) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 form-group">
+                {{ form_row(form.newsContenu) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6 form-group">
+                {{ form_row(form.newsDateDebValid) }}
+            </div>
+            <div class="col-6 form-group">
+                {{ form_row(form.newsDateFinValid) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6 form-group">
+                {{ form_row(form.newsPieceJointe1) }}
+            </div>
+            <div class="col-6 form-group">
+                {{ form_row(form.newsPieceJointe2) }}
+            </div>
+        </div>
+    </div>
+    <div class="card-footer text-muted">
+        <a href="{{ path('news_index') }}">
+            <button type="button" class="btn btn-secondary">Retour</button>
+        </a>
+        <button class="btn btn-primary">{{ button_label|default('Enregistrer') }}</button>
+    </div>
+{{ form_end(form) }}
